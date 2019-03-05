@@ -1,14 +1,5 @@
-use specs::{ System, ReadStorage, Join };
-use crate::components::*;
+mod hello_system;
+mod update_pos;
 
-pub struct HelloSystem;
-
-impl<'a> System<'a> for HelloSystem {
-    type SystemData = ReadStorage<'a, Position>;
-
-    fn run(&mut self, position: Self::SystemData) {
-        for pos in position.join() {
-            println!("Hello {:?}", pos);
-        }
-    }
-}
+pub use self::hello_system::HelloSystem;
+pub use self::update_pos::UpdatePos;
