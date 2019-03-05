@@ -1,11 +1,11 @@
-use specs::{ System, ReadStorage, WriteStorage, ReadExpect, Join };
+use specs::{ System, ReadStorage, WriteStorage, Read, Join };
 use crate::components::*;
 use crate::resources::DeltaTime;
 
 pub struct UpdatePos;
 
 impl<'a> System<'a> for UpdatePos {
-    type SystemData = (ReadExpect<'a, DeltaTime>,
+    type SystemData = (Read<'a, DeltaTime>,
                        ReadStorage<'a, Velocity>,
                        WriteStorage<'a, Position>);
 
